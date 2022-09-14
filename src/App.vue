@@ -2,8 +2,8 @@
   <div class="w-2/3 mx-auto mt-24 bg-neutral-200 p-4 drop-shadow-2xl rounded">
     <p class="mb-2 p-1">
       Please select a <a href="https://en.wikipedia.org/wiki/Time-based_one-time_password">TOTP</a> aka
-      2FA QR Code image or screenshot to parse out the secret.
-      This secret can then be used to setup TOTP / 2FA in applications
+      2FA QR Code image or screenshot to parse the secret and other parameters.
+      These can then be used to setup TOTP / 2FA in applications
       like <a href="https://keepassxc.org">KeepassXC</a>.
     </p>
 
