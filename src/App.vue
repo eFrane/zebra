@@ -41,7 +41,7 @@
             <pre class="grow text-center text-xl text-blue-900 bg-neutral-300 rounded">{{ val }}</pre>
           </div>
 
-          <pre class="my-2 p-2 w-full text-sm text-grey-700 whitespace-pre-wrap">Full URL: {{ content.url }}</pre>
+          <pre class="my-2 p-2 w-full text-sm text-grey-700 whitespace-pre-wrap" title="Full URL">{{ content.url }}</pre>
         </template>
         <template v-else>
           <span class="text-center">{{ err }}</span>
