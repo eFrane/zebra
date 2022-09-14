@@ -13,7 +13,7 @@
     </p>
 
     <input
-      class="mb-4"
+      class="mb-4 file:rounded file:p-1 file:bg-blue-900 file:text-neutral-300 file:hover:bg-blue-600 file:hover:cursor-pointer"
       type="file"
       name="qrcode"
       id="qrcode"
@@ -26,16 +26,26 @@
         <h2 class="text-center font-bold">Analysed QR Code</h2>
 
         <img
-          class="my-2 w-48 h-48 object-scale-down"
+          class="my-2 w-96 h-96 object-scale-down flex-none"
           :src="imageData"
           alt="The selected QR Code (you did select a QR Code right?)"
         >
       </div>
 
-      <div class="p-4 grow">
-        <h2 class="text-center font-bold">Secret</h2>
+      <div class="p-4 border-neutral-300 border-l">
+        <template v-if="content">
+          <h2 class="text-center font-bold">Data</h2>
 
-        <pre class="my-2 p-2 w-full text-center text-2xl text-blue-900 bg-neutral-300 rounded">{{ content }}</pre>
+          <div v-for="val, key of content.params" :key="key" class="flex flex-row my-2">
+            <h2 class="text-center font-bold align-bottom px-2">{{ key }}</h2>
+            <pre class="grow text-center text-xl text-blue-900 bg-neutral-300 rounded">{{ val }}</pre>
+          </div>
+
+          <pre class="my-2 p-2 w-full text-sm text-grey-700 whitespace-pre-wrap">Full URL: {{ content.url }}</pre>
+        </template>
+        <template v-else>
+          <span class="text-center">{{ err }}</span>
+        </template>
       </div>
     </div>
 
@@ -51,7 +61,8 @@ export default {
     return {
       imageData: null,
       blo: null,
-      content: ''
+      content: null,
+      err: ''
     }
   },
 
@@ -59,7 +70,8 @@ export default {
     reset () {
       this.imageData = null
       this.blob = null
-      this.content = ''
+      this.content = null
+      this.err = ''
     },
 
     updateQRCode (event) {
@@ -94,9 +106,18 @@ export default {
         const result = jsQr(canvasImage.data, bmp.width, bmp.height)
 
         const url = new URL(result.data)
-        this.content = url.searchParams.get('secret')
+        const params = {}
+
+        for (const [key, value] of url.searchParams) {
+          params[key] = value
+        }
+
+        this.content = {
+          url: result.data,
+          params: params
+        }
       }).catch(err => {
-        this.content = err
+        this.err = err
       })
     }
   }
