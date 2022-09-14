@@ -81,7 +81,7 @@ export default {
     updateQRCode (event) {
       this.reset()
 
-      if (event.target.files && event.target.files.length === 1) {
+      if (event.target.files?.length === 1) {
         this.blob = event.target.files[0]
 
         const reader = new FileReader()
