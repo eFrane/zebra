@@ -62,7 +62,7 @@ export default {
       this.content = ''
     },
 
-    updateQRCode(event) {
+    updateQRCode (event) {
       this.reset()
 
       if (event.target.files && event.target.files.length === 1) {
@@ -78,10 +78,8 @@ export default {
       }
     },
 
-    readQRCode() {
+    readQRCode () {
       createImageBitmap(this.blob).then(bmp => {
-        console.dir(bmp)
-
         const img = new Image(bmp.width, bmp.height)
         img.src = this.imageData
 
