@@ -1,5 +1,6 @@
 <template>
   <div class="w-2/3 lg:w-1/2 mx-auto mt-24 bg-neutral-200 p-4 drop-shadow-2xl rounded">
+    <h1 class="text-4xl text-center">🦓</h1>
     <p class="mb-2 p-1">
       Please select a <a href="https://en.wikipedia.org/wiki/Time-based_one-time_password" class="text-blue-600 hover:text-blue-400">TOTP</a> aka
       2FA QR Code image or screenshot to parse the secret and other parameters.
