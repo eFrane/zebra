@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       imageData: null,
-      blo: null,
+      blob: null,
       content: null,
       err: ''
     }
@@ -110,16 +110,20 @@ export default {
         const canvasImage = ctx.getImageData(0, 0, bmp.width, bmp.height)
         const result = jsQr(canvasImage.data, bmp.width, bmp.height)
 
-        const url = new URL(result.data)
+        try {
+          const url = new URL(result.data)
         const params = {}
 
-        for (const [key, value] of url.searchParams) {
-          params[key] = value
-        }
+          for (const [key, value] of url.searchParams) {
+            params[key] = value
+          }
 
-        this.content = {
-          url: result.data,
-          params: params
+          this.content = {
+            url: result.data,
+            params: params
+          }
+        } catch(e) {
+          this.err = 'The QR code does not seem to contain a valid 2FA authenticator URL.'
         }
       }).catch(err => {
         this.err = err
