@@ -113,7 +113,7 @@ export default {
 
         try {
           const url = new URL(result.data)
-        const params = {}
+          const params = {}
 
           for (const [key, value] of url.searchParams) {
             params[key] = value
