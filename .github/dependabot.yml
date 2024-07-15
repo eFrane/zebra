@@ -6,6 +6,10 @@
         interval: "weekly"
       allow:
       - dependency-type: all
+      groups:
+        babel:
+          patterns:
+          - "@babel/*"
     - package-ecosystem: github-actions
       directory: /
       schedule:
