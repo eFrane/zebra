@@ -13,7 +13,7 @@ jobs:
 
     - uses: actions/setup-node@v4
       with:
-        node-version: '22'
+        node-version: '20'
 
     - name: "Cache dependencies"
       uses: actions/cache@v4
@@ -22,10 +22,10 @@ jobs:
         key: ${{ runner.os }}build-node-${{ hashFiles('yarn.lock') }}
         restore-keys: ${{ runner.os }}-build-node-
 
-    - name: "Install documentation dependencies"
+    - name: "Install dependencies"
       run: yarn install --frozen-lockfile
 
-    - name: "Build documentation"
+    - name: "Build"
       run: yarn build
 
     - name: GitHub Pages action
