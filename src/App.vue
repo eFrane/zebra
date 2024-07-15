@@ -20,6 +20,7 @@
       id="qrcode"
       :onchange="updateQRCode"
       accept="image/*"
+      data-cy="button:qr-upload"
     >
 
     <div class="flex" v-if="imageData !== null">
@@ -42,7 +43,7 @@
             <pre class="grow text-center text-xl text-blue-900 bg-neutral-300 rounded">{{ val }}</pre>
           </div>
 
-          <pre class="my-2 p-2 w-full text-sm text-grey-700 whitespace-pre-wrap" title="Full URL">{{ content.url }}</pre>
+          <pre class="my-2 p-2 w-full text-sm text-grey-700 whitespace-pre-wrap" title="Full URL" data-cy="text:totp-url">{{ content.url }}</pre>
         </template>
         <template v-else>
           <span class="text-center">{{ err }}</span>

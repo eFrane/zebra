@@ -4,9 +4,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 9090",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:cypress": "cypress run",
+    "test": "start-server-and-test serve http-get://127.0.0.1:9090 test:cypress"
   },
   "dependencies": {
     "autoprefixer": "^10",
@@ -22,8 +24,10 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "cypress": "^13.13.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "start-server-and-test": "^2.0.4",
     "vue-cli-plugin-tailwind": "~3.0.0"
   },
   "eslintConfig": {
