@@ -1,6 +1,12 @@
   version: 2
   updates:
-    - package-manager: npm
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+        interval: "weekly"
       allow:
       - dependency-type: all
-    - package-ecosystem: gh-actions
+    - package-ecosystem: github-actions
+      directory: /
+      schedule:
+        interval: "weekly"
